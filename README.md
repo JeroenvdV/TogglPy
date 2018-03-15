@@ -14,11 +14,11 @@ TogglPy is a python library for interacting with the [Toggl API](https://github.
 + Download the project, or download **TogglPy.py** for local usage
 + Import the content: 
 ```python
-from TogglPy import Toggl
+from TogglPy import TogglPy
 ```
 + Create a Toggl object: 
 ```python
-toggl = Toggl()
+toggl = TogglPy.Toggl()
 ```
 + Authenticate either by Toggl credentials OR using [your personal API token](https://toggl.com/app/profile):
 ``` python
@@ -36,7 +36,7 @@ toggl.setAPIKey('<API-TOKEN>')
 from TogglPy import Toggl
 
 # create a Toggl object and set our API key 
-toggl = Toggl()
+toggl = TogglPy.Toggl()
 toggl.setAPIKey("mytogglapikey")
 
 response = toggl.request("https://www.toggl.com/api/v8/clients")
@@ -156,3 +156,4 @@ if datetime.datetime.today().weekday() not in (4, 5):
 ```shell
 (crontab -l ; echo "0 22 * * * toggl_entry.py")| crontab -
 ```
+
