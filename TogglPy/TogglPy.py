@@ -4,8 +4,9 @@
 # --------------------------------------------------------------
 # for making requests
 # backward compatibility with python2
-import sys
 from datetime import datetime
+
+import sys
 
 cafile = None
 if sys.version[0] == "2":
@@ -119,7 +120,7 @@ class Toggl():
         if parameters == None:
             return urlopen(Request(endpoint, headers=self.headers), cafile=cafile).read().decode('utf-8')
         else:
-            data = json.JSONEncoder().encode(parameters)
+            data = json.dumps(parameters).encode('utf-8')
             return urlopen(Request(endpoint, data=data, headers=self.headers), cafile=cafile).read().decode(
                 'utf-8')  # make request and read the response
 
@@ -205,11 +206,11 @@ class Toggl():
         if type(id) is not int:
             raise Exception("Invalid id %s provided " % (id))
         endpoint = Endpoints.TIME_ENTRIES + "/" + str(id)  # encode all of our data for a put request & modify the URL
-        data = json.JSONEncoder().encode({'time_entry': parameters})
-        request = urllib2.Request(endpoint, data=data, headers=self.headers)
+        data = json.dumps({'time_entry': parameters})
+        request = Request(endpoint, data=data, headers=self.headers)
         request.get_method = lambda: "PUT"
 
-        return json.loads(urllib2.urlopen(request).read())
+        return json.loads(urlopen(request).read())
 
     # -----------------------------------
     # Methods for getting workspace data
