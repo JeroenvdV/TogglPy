@@ -1,7 +1,8 @@
-from setuptools import setup, find_packages
 import codecs
 import os
 import re
+
+from setuptools import setup
 
 here = os.path.abspath(os.path.dirname(__file__))
 print("here:", here)
@@ -22,7 +23,7 @@ setup(
     version=find_version('TogglPy', '__init__.py'),
     description='',
     long_description=long_description,
-    url='https://github.com/matthewdowney/TogglPy',
+    url='https://github.com/JeroenvdV/TogglPy',
     author="Matthew Downey",
     author_email='matthewdowney20@gmail.com',
     license='Apache Software License',
@@ -36,7 +37,6 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
     ],
-
     keywords='api toggl',
     install_requires=[],
 )
